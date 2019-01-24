@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter} from 'react-router-dom';
 import ClassList from '../ClassList/ClassList';
 import axios from 'axios';
 
@@ -52,9 +52,11 @@ export default class Student extends Component {
           <h3>Grade: {this.state.studentInfo.grade}</h3>
           <h3>Email: {this.state.studentInfo.email}</h3>
         </div>
-        {/* <Link to='/classlist' component={ClassList}> */}
-        <button onClick={this.goBack}>Back</button>
-        {/* </Link> */}
+        <Route to='/classlist' render={({history})=>(
+          <button type='button' onClick={()=>{history.push('/classlist')}}>Back</button>
+        )}>
+        
+        </Route>
       </div>
     );
   }
